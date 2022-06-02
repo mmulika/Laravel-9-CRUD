@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-      Schema::create('books', function (Blueprint $table) {
-          $table->bigIncrements('id');
-          $table->string('name');
-          $table->string('ISBN');
-          $table->string('author');
-
-          $table->timestamps();
-      });
+        Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->string('mobile');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('students');
     }
 };

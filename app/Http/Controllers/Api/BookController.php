@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\cr;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\BookResource;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
-
-class Books extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class Books extends Controller
      */
     public function index()
     {
-
+    //   $books=Book::all();
+    //   return Book::collection ($books);
+    return BookResource::collection(Book::all());
     }
 
     /**
@@ -25,7 +28,6 @@ class Books extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -36,16 +38,25 @@ class Books extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $book = Book::create([
+
+            'id'=> '3',
+            "name"=> "River and the source",
+            "ISBN"=> '23s24',
+            "author" =>"mulika mutie",
+
+        ]);
+        return  new BookResource($book);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(cr $cr)
+    public function show(Book $book)
     {
         //
     }
@@ -53,10 +64,10 @@ class Books extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(cr $cr)
+    public function edit(Book $book)
     {
         //
     }
@@ -65,10 +76,10 @@ class Books extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cr $cr)
+    public function update(Request $request, Book $book)
     {
         //
     }
@@ -76,10 +87,10 @@ class Books extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cr $cr)
+    public function destroy(Book $book)
     {
         //
     }
